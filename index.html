@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="OpenWrt Briefing 是个人自用的简报阅读工具，将指定邮件中的完整简报排版为一张暗色长图，发送到本人绑定的 Telegram 私聊。">
+  <title>OpenWrt Briefing · 应用介绍</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e8edf5;font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.85}main,header,footer{max-width:800px;margin:auto;padding:24px}header{padding-bottom:8px;border-bottom:1px solid #2b3a52}nav{display:flex;flex-wrap:wrap;gap:12px 24px}a{color:#9ac7ff;text-underline-offset:4px}a:focus-visible{outline:3px solid #9ac7ff;outline-offset:5px}h1,h2{line-height:1.4;letter-spacing:.02em}h1{font-size:clamp(1.8rem,5vw,2.5rem);margin-top:0}h2{font-size:1.25rem;margin-top:0}p,li{overflow-wrap:anywhere}.eyebrow,.muted,footer{color:#b6c4d8}.eyebrow{font-size:.95rem;letter-spacing:.08em}.lead{font-size:1.15rem}section{margin:24px 0;padding:24px;background:#111c2f;border:1px solid #2b3a52;border-radius:14px}ul,ol{padding-left:1.5em}li+li{margin-top:8px}code{color:#d4e6ff;background:#19283e;padding:2px 6px;border-radius:4px}footer{font-size:.95rem;border-top:1px solid #2b3a52}.actions{display:flex;flex-wrap:wrap;gap:12px 24px}@media(max-width:480px){main,header,footer{padding:20px}section{padding:20px}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="页面导航"><a href="index.html" aria-current="page">应用介绍</a><a href="privacy.html">隐私说明</a><a href="terms.html">使用说明</a></nav>
+  </header>
+  <main id="main-content">
+    <p class="eyebrow">个人自用 · 邮件简报阅读工具</p>
+    <h1>OpenWrt Briefing</h1>
+    <p class="lead">将指定邮件中的完整简报排成一张暗色长图，发送到本人绑定的 Telegram 私聊，方便在手机上连续阅读。</p>
+    <section aria-labelledby="features">
+      <h2 id="features">它做什么</h2>
+      <p>工具为个人使用而设计。它通过 Gmail API 读取用户授权邮箱中的邮件元数据，按用户配置的确切发件地址与主题规则，筛选 A股、美股、AI 三类简报，并取得匹配邮件的正文。</p>
+      <ol>
+        <li>保留原邮件中的标题、段落、表格内容、来源链接，以及历史补发或提前版等版本说明。</li>
+        <li>在用户控制的设备上排成一张连续的暗色 PNG 长图，宽表格转为适合手机阅读的卡片。</li>
+        <li>将完整长图发送到唯一绑定的 Telegram 私聊，附简报主题、日期和阅读提示。</li>
+      </ol>
+      <p>简报内容来自原邮件。工具不使用 AI 改写正文，不重新生成研究结论，也不使用邮件或图片训练模型。</p>
+    </section>
+    <section aria-labelledby="access">
+      <h2 id="access">授权范围与实际筛选</h2>
+      <p>工具请求 Google 的 <code>gmail.readonly</code> 只读权限。该权限在技术上允许读取整个授权邮箱的邮件与设置，不能在 Google 授权层限定为某几个发件人或主题。</p>
+      <p>程序按用户配置只处理符合发件地址和主题规则的简报。这是程序内部的筛选规则。此项只读权限不允许工具发送邮件、修改邮件、改变已读状态或删除邮件。</p>
+    </section>
+    <section aria-labelledby="data">
+      <h2 id="data">数据在哪里处理</h2>
+      <p>OAuth 令牌、匹配邮件正文、排版图片缓存和投递状态保存在用户自己的电脑或用户控制的 OpenWrt 设备上。完整 PNG 会通过 Telegram 接口发送至本人绑定的私聊；Google 和 Telegram 分别依照各自平台政策处理其平台上的数据。</p>
+      <p>用户自行管理设备缓存和 Telegram 文件。工具没有固定的保留期限，也不自动删除全部缓存。邮件内容、令牌和投递状态不会出现在本介绍网站中；数据不会用于出售、广告画像或模型训练。</p>
+      <p>用户可停止工具，或在 Google 账号中撤销授权。撤销后，工具无法继续获取新邮件；设备中已有缓存和 Telegram 中已发送的文件仍需由用户分别管理。</p>
+      <div class="actions"><a href="privacy.html">阅读完整隐私说明</a><a href="terms.html">了解使用方式与边界</a></div>
+    </section>
+    <section aria-labelledby="support">
+      <h2 id="support">支持联系</h2>
+      <p><a href="mailto:lzzzzz000005@gmail.com">lzzzzz000005@gmail.com</a> 仅用于本工具的支持联系。请描述遇到的问题，不要发送密码、验证码、OAuth 令牌或邮件正文。</p>
+    </section>
+  </main>
+  <footer><p>OpenWrt Briefing · 个人自用工具 · 更新日期：<time datetime="2026-10-15">2026-10-15</time></p><p>本网站为静态说明页面，不提供登录、授权表单或账号资料收集。</p></footer>
+</body>
+</html>
