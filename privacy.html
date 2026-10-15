@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="个人自用 OpenWrt Briefing 的 Gmail 只读访问、缓存、Telegram 投递及撤销授权说明。">
+  <title>隐私说明 · OpenWrt Briefing</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0b1220; color: #e8edf5; font-family: system-ui, "Microsoft YaHei", "微软雅黑", sans-serif; font-size: 16px; line-height: 1.85; }
+    main { max-width: 800px; margin: 0 auto; padding: 24px; }
+    header { padding: 12px 0 24px; border-bottom: 1px solid #2b3a52; }
+    .brand { margin: 0 0 12px; font-size: 1.05rem; font-weight: 700; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+    a { color: #9ac7ff; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
+    a:hover { color: #c4e1ff; }
+    a:focus-visible { outline: 3px solid #9ac7ff; outline-offset: 5px; border-radius: 2px; }
+    nav a[aria-current="page"] { color: #ffffff; font-weight: 700; }
+    h1 { margin: 28px 0 12px; font-size: clamp(1.8rem, 6vw, 2.3rem); line-height: 1.4; }
+    h2 { margin: 0 0 12px; font-size: 1.2rem; line-height: 1.5; }
+    p { margin: 0 0 14px; }
+    p:last-child { margin-bottom: 0; }
+    section { margin: 20px 0; padding: 22px; background: #111c2f; border: 1px solid #2b3a52; border-radius: 12px; }
+    ul { margin: 10px 0; padding-left: 1.5em; }
+    li + li { margin-top: 10px; }
+    code { font-size: 0.9em; color: #c4e1ff; overflow-wrap: anywhere; }
+    .intro, footer { color: #bdcadd; }
+    strong { color: #ffffff; }
+    footer { margin-top: 28px; padding: 20px 0; border-top: 1px solid #2b3a52; font-size: 0.95rem; }
+    @media (max-width: 480px) { main { padding: 20px 16px; } section { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="brand">OpenWrt Briefing</p>
+      <nav aria-label="页面导航">
+        <a href="index.html">应用介绍</a>
+        <a href="privacy.html" aria-current="page">隐私说明</a>
+        <a href="terms.html">使用说明</a>
+      </nav>
+    </header>
+
+    <h1>隐私说明</h1>
+    <p class="intro">OpenWrt Briefing 是个人自用的简报收件与长图工具。本说明介绍工具访问哪些数据、数据保存在哪里，以及用户如何撤销访问和管理已保存文件。</p>
+
+    <section aria-labelledby="gmail-access">
+      <h2 id="gmail-access">Gmail 访问权限与实际筛选范围</h2>
+      <p>工具使用 Gmail 只读权限 <code>https://www.googleapis.com/auth/gmail.readonly</code>。<strong>该权限在技术上允许读取已授权账号的整个邮箱；Google 的授权并未按发件人、主题或某几封邮件限制读取范围。</strong></p>
+      <p>程序实际按用户配置的确切发件人与主题条件筛选 A 股、美股、AI 三类简报，并读取匹配邮件以生成完整长图。这些筛选由程序执行，不能等同于 Google 授权层面的邮件范围限制。</p>
+    </section>
+
+    <section aria-labelledby="storage-delivery">
+      <h2 id="storage-delivery">设备保存与 Telegram 投递</h2>
+      <ul>
+        <li><strong>本地及用户控制的 OpenWrt 设备：</strong>保存 OAuth 授权 token、匹配的邮件正文、PNG 缓存及投递状态，用于读取简报、生成图片与避免重复投递。</li>
+        <li><strong>Telegram：</strong>仅将简报 PNG 发送至用户唯一绑定的 Telegram 私聊。发送后，文件也会保存在 Telegram 平台及用户自行下载的设备中。</li>
+      </ul>
+      <p>缓存与文件由用户自行管理。本工具没有固定的数据保留时长，也不承诺在某个期限后自动删除缓存、投递记录或 Telegram 中的文件。</p>
+    </section>
+
+    <section aria-labelledby="data-use">
+      <h2 id="data-use">数据用途</h2>
+      <p>工具使用匹配邮件的内容生成便于阅读的长图，并记录投递结果。它不使用 AI 改写邮件，不将邮件内容用于模型训练，也不售卖用户数据。</p>
+      <p>本应用从 Google API 获得的信息的使用和转移遵循 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>，包括 Limited Use 要求。</p>
+      <p>本说明页面不运行 JavaScript，不包含跟踪器、表单或远程加载的资源。</p>
+    </section>
+
+    <section aria-labelledby="revoke-delete">
+      <h2 id="revoke-delete">撤销授权与管理已保存的数据</h2>
+      <p>用户可以在 Google 账号的第三方应用与服务访问设置中撤销本工具的授权。<strong>撤销生效后，工具无法继续通过该授权获取新邮件。</strong></p>
+      <p>撤销授权不会自动删除已经保存在本地或 OpenWrt 上的正文、PNG 缓存及投递记录，也不会自动删除已经发送到 Telegram 的文件。用户需要分别管理设备上的文件、Telegram 聊天中的文件以及自行下载的副本。</p>
+    </section>
+
+    <section aria-labelledby="platforms">
+      <h2 id="platforms">Google 与 Telegram 平台</h2>
+      <p>Google 与 Telegram 各自平台上的数据处理、保存与删除受各自的政策及账号设置约束。本工具的授权撤销或本地文件删除，不代表相应平台上的副本也已删除。</p>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">联系与支持</h2>
+      <p>隐私问题或使用支持可联系 <a href="mailto:lzzzzz000005@gmail.com">lzzzzz000005@gmail.com</a>。</p>
+      <p>支持联系不要求提供密码、验证码、OAuth token 或邮件正文。请不要将这些内容发送至支持邮箱。</p>
+    </section>
+
+    <footer>
+      <p>更新日期：<time datetime="2026-10-15">2026-10-15</time></p>
+    </footer>
+  </main>
+</body>
+</html>
