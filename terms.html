@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="OpenWrt Briefing 个人简报阅读工具的使用方式、投递行为与维护边界。">
+  <title>使用说明 · OpenWrt Briefing</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e8edf5;font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.85}main,header,footer{max-width:800px;margin:auto;padding:24px}header{padding-bottom:8px;border-bottom:1px solid #2b3a52}nav{display:flex;flex-wrap:wrap;gap:12px 24px}a{color:#9ac7ff;text-underline-offset:4px}a:focus-visible{outline:3px solid #9ac7ff;outline-offset:5px}h1,h2{line-height:1.4;letter-spacing:.02em}h1{font-size:clamp(1.8rem,5vw,2.5rem);margin-top:0}h2{font-size:1.25rem;margin-top:0}p,li{overflow-wrap:anywhere}.eyebrow,.muted,footer{color:#b6c4d8}.eyebrow{font-size:.95rem;letter-spacing:.08em}section{margin:24px 0;padding:24px;background:#111c2f;border:1px solid #2b3a52;border-radius:14px}ul{padding-left:1.5em}li+li{margin-top:8px}footer{font-size:.95rem;border-top:1px solid #2b3a52}@media(max-width:480px){main,header,footer{padding:20px}section{padding:20px}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="页面导航"><a href="index.html">应用介绍</a><a href="privacy.html">隐私说明</a><a href="terms.html" aria-current="page">使用说明</a></nav>
+  </header>
+  <main>
+    <p class="eyebrow">个人工具的使用方式与边界</p>
+    <h1>使用说明</h1>
+    <p>OpenWrt Briefing 用于把本人邮箱中的指定简报转换成手机便于阅读的完整长图。本页说明实际功能和维护注意事项，无需勾选同意或提交资料。</p>
+    <section aria-labelledby="setup">
+      <h2 id="setup">由用户管理接入与范围</h2>
+      <ul>
+        <li>用户在自己的设备上完成 Google 只读授权，并核对发件地址与主题筛选规则。</li>
+        <li>发送对象是唯一绑定的本人 Telegram 私聊。更改绑定或筛选规则后，应核对实际收件效果。</li>
+        <li>授权权限的完整范围、保存位置及撤销方式见<a href="privacy.html">隐私说明</a>。</li>
+      </ul>
+    </section>
+    <section aria-labelledby="reading">
+      <h2 id="reading">阅读原邮件的完整排版</h2>
+      <p>每封匹配简报以一张连续暗色 PNG 发送。打开原文件后放大阅读，可保存至自己的设备。</p>
+      <p>图片保留原简报的内容、来源链接和版本说明，程序不使用 AI 改写、不训练模型，也不核实每项原始信息。需要理解上下文或查看更新时，请回到原邮件与原始来源。</p>
+    </section>
+    <section aria-labelledby="delivery">
+      <h2 id="delivery">投递与维护</h2>
+      <p>工具依赖设备在线、有效授权及 Google、Telegram 平台接口，不承诺固定到达时间或持续可用。授权可能到期或被撤销，网络与平台也可能暂时不可用。</p>
+      <p>已确认发送的简报通过投递状态去重。遇到超时或无法确认的投递时，需要用户核对原会话，不应直接反复重发。首次启动通常只登记已有匹配邮件，历史简报需要用户明确选择处理。</p>
+      <p>用户自行管理设备上的缓存、投递状态以及 Telegram 中的文件。工具不承诺固定保留时长或自动删除；清理投递状态可能影响去重，应先确认要处理的内容。</p>
+    </section>
+    <section aria-labelledby="stop">
+      <h2 id="stop">停止使用与支持联系</h2>
+      <p>用户可停止设备上的工具，并在 Google 账号中撤销应用授权。撤销后工具无法继续获取新邮件，已保存的缓存与已发送文件需分别管理。</p>
+      <p>支持邮箱：<a href="mailto:lzzzzz000005@gmail.com">lzzzzz000005@gmail.com</a>，仅用于本工具支持。请勿发送密码、验证码、令牌或邮件正文。</p>
+    </section>
+  </main>
+  <footer><p>OpenWrt Briefing · 更新日期：<time datetime="2026-10-15">2026-10-15</time></p><p><a href="index.html">返回应用介绍</a> · <a href="privacy.html">隐私说明</a></p></footer>
+</body>
+</html>
